@@ -3,12 +3,26 @@
   "extends": [
     "config:recommended"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$/"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>.*?)\\s+depName=(?<depName>.*?)(?:\\s+versioning=(?<versioning>.*?))?\\n(?:ENV|ARG)\\s+.*?_VERSION=\"?(?<currentValue>[^\"]*)\"?"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ],
   "packageRules": [
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["alpine"],
       "automerge": true,
-      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
+      "matchDatasources": ["repology"],
+      "automerge": true,
       "platformAutomerge": true
     }
   ]
