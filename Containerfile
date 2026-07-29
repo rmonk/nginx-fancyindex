@@ -1,7 +1,7 @@
 FROM alpine:latest@sha256:fd791d74b68913cbb027c6546007b3f0d3bc45125f797758156952bc2d6daf40
 
 # renovate: datasource=repology depName=alpine_edge/nginx versioning=loose
-ENV NGINX_VERSION="1.30.4-r2"
+ENV NGINX_VERSION="1.30.4-r1"
 
 # Install NGINX and the fancyindex module together from Alpine's repo
 RUN apk add --no-cache \
