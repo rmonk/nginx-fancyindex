@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Containerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: yourusername/nginx-fancyindex:latest
+          tags: moosemouse/nginx-fancyindex:latest
